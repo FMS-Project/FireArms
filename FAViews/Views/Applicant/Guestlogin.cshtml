@@ -1,0 +1,82 @@
+﻿@model FAViews.Models.Applicant
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="~/Models/style.css" />
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+    <div style="border:1px solid black;margin:50px;">
+        <header style="background-color:#2D76BA;">
+            <div class="containerfluid">
+                <div class="container">
+                    <div class="section">
+                        <h3 style="text-decoration-color:black;text-align:center">SecureAccess Washington (SAW)</h3>
+                        @*<div class="content">
+                        <p>Use your SecureAccess Washington (SAW) username and password</p>
+                        <a href="#">What is SAW?</a>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container-fluid" style="align-content: center; height: 150px;">
+            <div class="container">
+                <div align="center" style="padding-right:30px">
+                    <div class="row" style="margin-top:20px;padding-right:30px;">
+                        <div>
+                            <button type="submit" id="button1" class="fas fa-user-edit" name="Submit" formaction='@Url.Action("Index2", "Applicant")' style="padding: 8px 20px; margin-right: 15px; border: none;background-color:#2D76BA;color: #fff">@*<span class="glyphicon glyphicon-user"></span>*@ Dealer </button>
+                            <button type="submit" id="button2" class="fas fa-user" name="Submit" formaction='@Url.Action("Index", "Applicant")' style="padding: 8px 20px; margin-right: 15px; border: none;background-color:#2D76BA;color: #fff">@*<span class="glyphicon glyphicon-user"></span>*@ Alien </button>
+                            <button type="submit" id="button3" class="fas fa-user-friends" name="Submit" formaction='@Url.Action("FTA", "Applicant")' style="padding: 8px 20px; margin-right: 15px; border: none;background-color:#2D76BA;color: #fff">@*<span class="glyphicon glyphicon-user"></span>*@ FireArm Transfer </button>
+
+                            @*<button type="button" class="btn btn-info">
+                                <span class="glyphicon glyphicon-search"></span> Search
+                            </button>*@
+                            @*<button type="submit" id="button2" name="Submit" formaction='@Url.Action("Index", "Applicant")'>Alien Application</button>
+                            <button type="submit" id="button2" name="Submit" formaction='@Url.Action("FTA", "Applicant")'>FireArm Transfer Application</button>*@
+                            @*<button type="button" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-user"></span> User
+                            </button*@
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top:20px;padding-right:30px;">
+                        <div>
+                            <label for="txtuser">Applicant Id</label>
+                            @Html.TextBoxFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                            <button type="submit" id="button" name="Submit" formaction='@Url.Action("EditApplicant", "Applicant")'>Edit</button>
+                            <button type="submit" id="button" name="Submit" formaction='@Url.Action("Readonly", "Applicant")'>View</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <br />
+        <div>
+            <footer style="background-color:#2D76BA;">
+                <div class="containerfluid">
+                    <div class="container">
+                        <h5 style="text-decoration-color:black;text-align:center">#SAW 2020</h5>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+    
+    }
+</body>
+</html>

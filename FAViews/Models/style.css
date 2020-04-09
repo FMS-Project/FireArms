@@ -1,0 +1,57 @@
+
+.container{
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+h3,p{
+    margin: 0;
+}
+a{
+    text-decoration: underline;
+}
+input,label{
+    width: 100%;
+}
+input{
+    margin: 10px 0px 15px 0px;
+    padding: 5px 0px 5px 10px;
+}
+button{
+    padding: 8px 20px;
+    margin-right: 15px;
+    background-color: #2D76BA;
+    color: #fff;
+    border: none;
+}
+
+.section{
+    width: 650px;
+    margin: 0 auto;
+    border: 1px solid #2D76BA;
+    margin-top: 30px;
+}
+
+.section h3{
+    width: 100%;
+    background: #2D76BA;
+    color: #fff;
+    padding: 15px 0px 15px 15px;
+}
+.section .content{
+    padding: 15px;
+    font-size: 18px;
+}
+.section .content #unique{
+    margin: 15px 0px;
+    width: 95%;
+}
+.section .content #password{
+    margin-top: 0px;
+}
+.header {
+    width: 650px;
+    margin: 0 auto;
+    border: 1px solid #2D76BA;
+    margin-top: 30px;
+}

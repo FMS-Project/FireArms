@@ -1,0 +1,21 @@
+﻿@model FAViews.Models.Applicant
+
+@using (Html.BeginForm())
+{
+<div align="center">
+    <h1>Your Application is submitted successfully.....</h1>
+</div>
+
+
+<div align="center" style=" color:red">
+    <h1>Your Application Id is:@Html.DisplayFor(model => model.Id)</h1>
+</div>
+
+
+<div>
+    <button type="submit" id="button1" name="Submit" formaction='@Url.Action("Login", "Applicant")'>Back</button>
+
+</div>
+
+
+}

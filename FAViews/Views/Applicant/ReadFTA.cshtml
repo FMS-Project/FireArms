@@ -1,0 +1,574 @@
+﻿@model FAViews.Models.Applicant
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Applicant Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+            <br />
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="~/Images/logo.png" align="left" />
+                </div>
+                <div class="col-sm-6">
+                    <h1 align="center">
+                        Firearm License
+                    </h1>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="col-md-12" style="Border:none">
+                        <strong>DEALER:This form must be completed in full and TYPED.</strong>
+                        <div>
+                            <ol type="1">
+                                <li>
+                                    <strong>Send by the dose of business day</strong> to the appropriate Chief of Police @*<br role="none" />*@or Sheriff for background check.
+                                </li>
+
+                                <li>
+                                    <strong>Send within 7 days</strong> after delivery of the firearm to the applicable address.<br>Select
+                                    the type of application you are sending:<br />
+                                    <br>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="col-md-7">
+                                                    @Html.CheckBoxFor(model => model.Firearms, new { disabled = "disabled" })
+                                                    <label for="chkbx1">Semiautomatic Assault Rifles (SAR) ONLY:</label><br>
+                                                    Include check payable by dealer to Dept of Licensing for SAR fee. Mail to:<br>
+                                                    <strong>Department of Licensing</strong><br>
+                                                    <strong>Firearms Section</strong><br>
+                                                    <strong>PO Box 9048</strong><br>
+                                                    <strong>Olympia, WA 98507-9048</strong><br><br>
+                                                </div>
+                                                <div class="col-md-5">
+
+                                                    @Html.CheckBoxFor(model => model.Pistols, new { disabled = "disabled" })
+                                                    <label for="chkbx2">Pistol Transfer Applications (PTA):</label><br>
+                                                    <strong>Department of Licensing Firearms Section</strong><br>
+                                                    <strong> PO Box 9649</strong><br>
+                                                    <strong> Olympia, WA 98507-9649</strong><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </li>
+
+                            </ol>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="border-left: 0px;border-top: 0px;">
+
+                        <ol start="3">
+
+                            <li>
+                                <p>Retain a copy for your records for 6 years.</p>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div style="border:solid 1px #000">
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="">Application Initiated (date and time)</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.ApplicationDate, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    @Html.TextBoxFor(model => model.ApplicationType, new { @Value = "FTA", @type = "hidden" })
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.HiddenFor(model => model.Appstatus)
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="chkbx2">Private Transfer</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.CheckBoxFor(model => model.PrivateTransfer, new { disabled = "disabled" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="">Approval Code</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.Approvalcode, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="chkbx2">Dealer Transaction</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.Dealertransaction, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label for="">Appropriate LEA</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.EditorFor(model => model.AppropriateLea, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div>
+                    <div>
+                        <h1>Section A - Firearm Description (Type all information)</h1>
+                    </div>
+                    <div style="border:solid 1px #000">
+                        <br />
+                        @*<div class="container">*@
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Firearm Serial Number</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.FireArmSerialnumber, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Other (no abbreviations)</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Others, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Caliber</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        @Html.EditorFor(model => model.Caliber, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Barrel Length</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Barrellength, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Condition</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DropDownListFor(model => model.condition, new List<SelectListItem>()
+                              {
+                                    new SelectListItem(){ Text= "New", Value = "New"},
+                                    new SelectListItem(){ Text= "Used", Value = "Used"},
+                              }, "Select Condition", new { disabled = "disabled" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Model Number or Name</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Modelno, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+                <br />
+                <div>
+                    <h1>Section B - Dealer Information</h1>
+                </div>
+                <div style="border:solid 1px #000">
+                    <div class="container">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Date Weapon Delivered</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.weapondelivereddate, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">UBI Number</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.UBInumber, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Business ID</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.businessId, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Location ID</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.LocationId, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Federal Firearms License Number</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.firearmslicensenumber, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Dealer/Store Name </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.storename, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Address</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.DealerAddress, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Area Code </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.DealerAreaCode, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Email</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <br />
+                <div>
+                    <h1>Section C - Buyer Information</h1>
+                </div>
+                <div style="border:solid 1px #000">
+
+                    <div class="container">
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">
+                                            Buyer Name (Last, First, Middle, Suffix)
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Date Of Birth</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">State </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">City</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">ZIP Code </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Zipcode, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Country</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Height </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Weight</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Place Of Birth </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Placeofbirth, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Eyes</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Eyes, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label>Type Of Identification </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DropDownListFor(model => model.Identificationtype, new List<SelectListItem>()
+                 {
+                     new SelectListItem(){ Text= "Driver", Value = "Driver"},
+                       new SelectListItem(){ Text= "State ID", Value = "State ID"},
+                     new SelectListItem(){ Text= "Passport", Value = "Passport"},
+                     new SelectListItem(){ Text= "SSN", Value = "SSN"},
+                 },
+                     "Select Identificationtype", new { disabled = "disabled" })
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Area Code</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Areacode, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Race </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.DropDownListFor(model => model.Race, new List<SelectListItem>()
+                    {
+                        new SelectListItem(){ Text= "American Indian/Alaska Native", Value = "American Indian/Alaska Native"},
+                          new SelectListItem(){ Text= "Asian", Value = "Asian"},
+                        new SelectListItem(){ Text= "Black", Value = "Black"},
+                        new SelectListItem(){ Text= "Native Hawaiian/Pacific Islander", Value = "Native Hawaiian/Pacific Islander"},
+                           new SelectListItem(){ Text= "White", Value = "White"},
+                    },
+                        "Select Race",new { disabled = "disabled" })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Permanent Resident Card Number</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.residentcardno, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">
+                                            Washington State Alien Firearms License Number
+                                        </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.washintonfirearmnumber, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Concealed Pistol License Number </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.Concealedlicensenumber, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Expiration Date </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.ExpirationDate, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3">
+                                        <label for="">Issuing Authority</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        @Html.EditorFor(model => model.issuingauthority, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            @*<div align="right">
+                <button type="submit" id="button1" name="Submit" formaction='@Url.Action("UpdateButton", "Applicant")'>Submit</button>
+            </div>*@
+        </div>
+
+        <br />
+        <br />
+
+
+
+    }
+</body>
+</html>
+
+

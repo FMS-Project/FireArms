@@ -1,0 +1,115 @@
+﻿@model IEnumerable<FAViews.Models.Applicant>
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Login Form</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    </head>*@
+@*<body>*@
+@using (Html.BeginForm())
+{
+
+    if (@ViewBag.status == "Login Success")
+    {
+        @*<div>
+                <h1 align="center">Applicant Details</h1>
+            </div>
+            <div>
+                @Html.Partial("GetLogin")
+            </div>
+
+                <div style="text-align:center;">
+                          <h3>@ViewBag.status</h3>
+
+                 </div>*@
+
+
+        <div @*style="padding-left:250px"*@ align="center">
+            @*<div style="border:1px solid #000 ; width:750px" >*@
+            <table>
+                <tr>
+                    <td>
+                        <table class="table table-bordered table-responsive table-hover">
+                            <tr align="center">
+                                <th>Application ID</th>
+                                <th>Name</th>
+                                <th>Company Name</th>
+                                <th>Application Type</th>
+                                <th>Application Status</th>
+                                <th>Created Date</th>
+
+
+                            </tr>
+
+                            @{
+                                string COLOR1 = "#ffffff";
+                                string COLOR2 = "#f1f1f1";
+                                string bgcolor = "#ffffff";
+                            }
+
+                            @foreach (var item in ViewBag.applicantinfo)
+                            {
+                                bgcolor = bgcolor == COLOR1 ? COLOR2 : COLOR1;
+
+                        <tr bgcolor="@bgcolor">
+
+                            <td>
+                                @item.Id
+                            </td>
+                            <td>
+                                @item.Fullname
+                            </td>
+                            <td>
+                                @item.Companyname
+                            </td>
+                            <td>
+                                @item.ApplicationType
+                            </td>
+                            <td>
+                                @item.Appstatus
+                            </td>
+                            <td>
+                                @item.CreatedOn
+                            </td>
+                        </tr>
+
+                            }
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+        @*</div>*@
+    }
+    else
+    {
+
+
+        <h1 align="center" style="color:red">@ViewBag.status</h1>
+
+    }
+
+
+
+
+}
+
+<style>
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+</style>
+
+
+

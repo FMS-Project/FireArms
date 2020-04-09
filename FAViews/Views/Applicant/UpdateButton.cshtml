@@ -1,0 +1,36 @@
+﻿
+@model FAViews.Models.Applicant
+
+@using (Html.BeginForm())
+{
+    if (Model.Appstatus == "new")
+    {
+        <div align="center">
+            <h1>Your Application  @Html.DisplayFor(model => model.Id) is updated sucessfully</h1>
+
+        </div>
+
+
+        @*<div style=" color:red">
+                <h1>Your Application Id is:</h1>
+            </div>*@
+
+
+
+    }
+    else
+    {
+    <div align="center">
+    <h1>Your Application is @ViewBag.Appstatus</h1>
+    <h1>You can't Edit</h1>
+  </div>
+    }
+    <div>
+        <button type="submit" id="button1" name="Submit" formaction='@Url.Action("Login", "Applicant")'>Back</button>
+
+    </div>
+}
+
+
+
+

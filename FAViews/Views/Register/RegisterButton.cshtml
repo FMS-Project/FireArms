@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login Form</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+    <div align="center">
+        <h2>Registered Sucessfuly</h2>
+    </div>
+        <div>
+            <button type="submit" id="button" name="Submit" formaction='@Url.Action("Login", "Applicant")'>Back to Login</button>
+
+        </div>
+    }
+    </body>
+</html>

@@ -1,0 +1,549 @@
+﻿@model FAViews.Models.Applicant
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Applicant Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />*@
+    @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>*@
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="~/Images/logo.png" align="left" />
+                </div>
+                <div class="col-sm-6">
+                    <h1 align="center">
+                        Pistols,Firearms,Ammunition
+                        Dealer License
+                    </h1>
+
+                </div>
+            </div>
+            <div>
+                <div>
+                    @Html.Label("I intend to deal in : (check all that apply)")
+                    <br />
+                    @Html.CheckBox("Pistols") Pistols
+                    <br />
+                    @Html.CheckBox("Firearms") Firearms other than pistols
+                    <br />
+                    @Html.CheckBox("Ammunition") Ammunition
+
+                </div>
+                <h1>Firearms Dealer Information</h1>
+                <div class="col-sm-12" style="border:1px solid #000">
+
+
+                    <div class="row">
+                        <br />
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <label>Full name of firearm dealer company/corporate/owner agent</label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Companyname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.TextBoxFor(model => model.ApplicationType, new { @Value = "Dealer", @type = "hidden" })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.Label("Business address (include physical and Post Office box addresses)")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.DealerAddress, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    @*<div class="row">
+                        <br />
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                @Html.Label("Business address (include physical and Post Office box addresses)")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.DealerAddress, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <br />
+                        </div>
+                    </div>*@
+                    <div class="row">
+                        <br />
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                @Html.Label("City")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.DealerCity, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.Label("State")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.DealerState, new { htmlAttributes = new { @class = "form-control" } })
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                @Html.Label("Zip")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.DealerZipcode, new { htmlAttributes = new { @class = "form-control" } })
+
+                            </div>
+                            <div class="col-md-3">
+                                @Html.Label("Country")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.DealerCountry, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br />
+                            <div class="col-md-3">
+                                <Label>Type Of Identification</Label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(model => model.Identificationtype, new List<SelectListItem>()
+                           {
+                               new SelectListItem(){ Text= "Driver", Value = "Driver"},
+                                 new SelectListItem(){ Text= "State ID", Value = "State ID"},
+                               new SelectListItem(){ Text= "Passport", Value = "Passport"},
+                               new SelectListItem(){ Text= "SSN", Value = "SSN"},
+                           },
+                               "Select Identificationtype")
+
+                            </div>
+                            <div class="col-md-3">
+                                @Html.Label("Identification Number")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Identificationnumber, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br />
+                            <div class="col-md-3">
+                                @Html.Label("Federal Firearms License Number")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.firearmslicensenumber, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.Label("Expiration Date")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.ExpirationDate, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br />
+                            <div class="col-md-3">
+                                @Html.Label("Area Code ")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.DealerAreaCode, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.Label("Washington UBI number (16 digits)")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.UBInumber, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br />
+                            <div class="col-md-3">
+                                @Html.Label("Previous Dealer License Expiration Date")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.PreviousDealerDate, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <br />
+
+                </div>
+                <br/>
+                <br/>
+               <h1>Individual/Agent Information</h1>
+             <div class="col-sm-12" style="border:1px solid #000">
+                    <div class="row">
+                        <br />
+                        <div class="col-sm-12">
+                            <div class="col-md-3">
+                                @Html.Label("PRINT or TYPE Name (Last,First,Middle)")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Fullname, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3">
+                                <label>List any other names by which you have been known (maiden name,alias)</label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Aliasname, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row">
+                        <br />
+                        <div class="col-sm-12">
+                            <div class="col-md-3">
+                                <label>List any other names by which you have been known (maiden name,alias)</label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Aliasname, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <br />
+                    </div>*@
+                    <div class="row">
+                        <br />
+                        <div class="col-md-12">
+                            <div class="col-sm-3">
+                                @Html.Label("City")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.Label("State")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                @Html.Label("Country")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.Label("Zip")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Zipcode, new { htmlAttributes = new { @class = "form-control" } })
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <br />
+                        <div class="col-md-12">
+
+                            <div class="col-md-3">
+                                @Html.Label("Date Of Birth")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-md-3">
+                                @Html.Label("Race")
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Race, new { htmlAttributes = new { @class = "form-control" } })
+
+                            </div>
+
+                            <br />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-sm-3">
+                                <label>Height </label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Weight </label>
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <br />
+                        <div class="col-md-12">
+                            <div class="col-sm-3">
+                                <label>Gender</label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>()
+                           {
+                                 new SelectListItem(){ Text= "Male", Value = "Male"},
+                                 new SelectListItem(){ Text= "Female", Value = "Female"},
+                           }, "Select Gender")
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Eyes </label>
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(model => model.Eyes, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-sm-3">
+                                <label>Hair </label>
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(model => model.Hair, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <label>List type and location of all marks, scars, tattoos.</label>
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(model => model.Tatoos)
+                            </div>
+
+                            <div class="col-sm-3">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br />
+                        <div class="col-md-12">
+                            <div class="col-sm-3">
+                                <label>  Have you been a resident of Washington State for the last 90 days? </label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.CheckBox("Question11Yes") Yes
+                                @Html.CheckBox("Question11No") No
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Area code</label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Areacode, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="col-sm-3">
+                                <label>Are you a U.S. citizen?</label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.CheckBox("Question1Yes") Yes
+                                @Html.CheckBox("Question1No") No
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Place of birth (city, state, or province and country)</label>
+                            </div>
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.Placeofbirth, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-10">
+                                <label>If you are not a U.S. citizen, in order to legally possess a firearm you are required to obtain an alien firearms license (RCW 9.41.170). Do you possess such a license?</label>
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.CheckBox("Question2Yes") Yes
+                                @Html.CheckBox("Question2No") No
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-10">
+                                <label>If you possess an alien firearms license, enter the license number, expiration date, and Alien Registration/I-94 number.</label>
+                            </div>
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(model => model.AlienRegistrationnumber, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+
+                        <div>
+                            <div style="border:solid 1px #000">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-10">
+                                            <label>1.Have you ever been convicted in adult court or adjudicated in a juvenile court, in this state or elsewhere, of one of the prohibitive crimes described on page 3 of this form? </label>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <br />
+                                            @Html.CheckBox("Question3Yes") Yes
+                                            @Html.CheckBox("Question3No") No
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-10">
+                                            <label>2.Are you now on bond or personal recognizance pending trial, appeal, or sentence for any felony offense? </label>
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @Html.CheckBox("Question4Yes") Yes
+                                            @Html.CheckBox("Question4No") No
+
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-10">
+                                            <label>3.Are you the subject of an outstanding arrest warrant from any court for any crime?  </label>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @Html.CheckBox("Question5Yes") Yes
+                                            @Html.CheckBox("Question5No") No
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-10">
+                                            <label>4.Have you been convicted of three or more violations of Washington's firearms laws within any five-year period? </label>
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @Html.CheckBox("Question6Yes") Yes
+                                            @Html.CheckBox("Question6No") No
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-10">
+                                            <label>5.Have you had a firearm forfeited within the past ear for a drug or alcohol incident pursuant to RCW 9.41.098(1)(e)? </label>
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @Html.CheckBox("Question7Yes") Yes
+                                            @Html.CheckBox("Question7No") No
+
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-10">
+                                            <label>6.Are you under a court order or an injunction concerning the possession of a firearm" . </label>
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @Html.CheckBox("Question8Yes") Yes
+                                            @Html.CheckBox("Question8No") No
+
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-10">
+                                            <label>7.Is your concealed pistol license, if any, in a revoked status?. </label>
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @Html.CheckBox("Question9Yes") Yes
+                                            @Html.CheckBox("Question9No") No
+
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-10">
+                                            <label>8.Have you ever been confined in a mental-health facility for more than fourteen days for treatment, or been committed as criminally insane?. . </label>
+
+                                        </div>
+                                        <div class="col-sm-2">
+                                            @Html.CheckBox("Question10Yes") Yes
+                                            @Html.CheckBox("Question10No") No
+                                            <br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+                                <div>
+                                    <p>If you answered yes to any of the numbered questions above, but still believe you are eligible for a license, attach a list of dates and circumstances including copies of any applicable pardons, certificates of rehabilitation, or court orders. </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <br />
+        <div align="right">
+            <button type="submit" id="button1" name="Submit" formaction='@Url.Action("CreateButton", "Applicant")'>Submit</button>
+        </div>
+
+
+    }
+</body>
+</html>
+
